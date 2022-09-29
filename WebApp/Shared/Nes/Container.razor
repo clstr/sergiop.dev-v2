@@ -1,0 +1,16 @@
+﻿<section class="nes-container">
+    @if(Title is not null)
+    {
+        <h2 class="nes-text is-primary">@Title</h2>
+    }
+    
+    @ChildContent
+</section>
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+    
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

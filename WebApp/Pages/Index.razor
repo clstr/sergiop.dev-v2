@@ -1,0 +1,59 @@
+﻿@page "/"
+@using Microsoft.Extensions.Configuration
+
+@inject IConfiguration _configuration
+
+@if(details is null)
+{
+    <h1>Loading . . . </h1>
+}
+else 
+{
+    <PageTitle>Sergio Palomino</PageTitle>
+
+    <section class="showcase"
+         style="padding-top: 150px; max-width: 980px; margin: 0 auto; text-align: center">
+        <section class="nes-container with-title is-centered">
+            <h3 class="title">@(details.Name)</h3>
+           @* <p>@(details.ShortDescription)</p>*@
+
+            <ul id="menu">
+                @foreach (var item in details.ShortDescription.Split(','))
+                {
+                    <li>@item</li>
+
+                    @:&nbsp;
+                }
+            </ul>
+            
+            <div id="sns-icons" class="item">
+                <section class="icon-list">
+                    @foreach (var link in details.Links)
+                    {
+                        <a href="@link.Url" target="_blank" rel="noopener noreferrer" aria-label="@link.Title">
+                            <i class="nes-icon is-large @link.Icon" />
+                        </a>
+                        @:&nbsp;
+                    }
+                </section>
+            </div>
+        </section>
+    </section>
+    
+}
+
+
+@code
+{
+    private PersonalInformation details = default!;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if(firstRender)
+        {
+            details = _configuration.GetSection("PersonalInformation").Get<PersonalInformation>();
+
+            StateHasChanged();
+        }
+    }
+}
