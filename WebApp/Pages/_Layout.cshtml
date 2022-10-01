@@ -28,16 +28,7 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-
-    <script>
-        function FooterResized(dotnethelper) {
-            function padPageElement() {
-                document.getElementsByClassName("page")[0].style.paddingBottom = footerElm.offsetHeight + "px";
-            }
-            var footerElm = document.getElementById("footer");
-            new ResizeObserver(padPageElement).observe(footerElm);
-        }
-    </script>
+    
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>
