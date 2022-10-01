@@ -2,21 +2,19 @@
 @using Microsoft.Extensions.Configuration
 
 @inject IConfiguration _configuration
+<PageTitle>Sergio Palomino</PageTitle>
 
-@if(details is null)
+@if (details is null)
 {
-    <h1>Loading . . . </h1>
+    <section class="showcase ShowCaseMiddle">
+        <h1>Loading . . . </h1>
+    </section>
 }
-else 
+else
 {
-    <PageTitle>Sergio Palomino</PageTitle>
-
-    <section class="showcase"
-         style="padding-top: 150px; max-width: 980px; margin: 0 auto; text-align: center">
+    <section class="showcase ShowCaseMiddle">
         <section class="nes-container with-title is-centered">
             <h3 class="title">@(details.Name)</h3>
-           @* <p>@(details.ShortDescription)</p>*@
-
             <ul id="menu">
                 @foreach (var item in details.ShortDescription.Split(','))
                 {
@@ -25,8 +23,7 @@ else
                     @:&nbsp;
                 }
             </ul>
-            
-            <div id="sns-icons" class="item">
+            <div id="sns-icons" class="item PaddingTop-25">
                 <section class="icon-list">
                     @foreach (var link in details.Links)
                     {
@@ -37,9 +34,12 @@ else
                     }
                 </section>
             </div>
+            <div class="PaddingTop-25">
+                <a href="files/Sergio Palomino CV.pdf">Résumé</a>
+            </div>
         </section>
     </section>
-    
+
 }
 
 
@@ -49,7 +49,7 @@ else
 
     protected override void OnAfterRender(bool firstRender)
     {
-        if(firstRender)
+        if (firstRender)
         {
             details = _configuration.GetSection("PersonalInformation").Get<PersonalInformation>();
 

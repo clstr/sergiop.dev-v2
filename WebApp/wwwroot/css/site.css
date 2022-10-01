@@ -4,6 +4,17 @@
     font-family: "Press Start 2P";
 }
 
+.ShowCaseMiddle {
+    padding-top: 150px;
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.PaddingTop-25 {
+    padding-top: 25px;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
