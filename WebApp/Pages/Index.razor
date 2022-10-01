@@ -16,10 +16,9 @@ else
         <section class="nes-container with-title is-centered">
             <h3 class="title">@(details.Name)</h3>
             <ul id="menu">
-                @foreach (var item in details.ShortDescription.Split(','))
+                @foreach (var item in details.SelfDescriptions)
                 {
                     <li>@item</li>
-
                     @:&nbsp;
                 }
             </ul>
