@@ -1,17 +1,3 @@
-﻿@using Microsoft.JSInterop
-
-<footer class="footer" id="footer">
-    <div style="text-align: center">@DateTime.Today.ToString("dd.MM.yyyy")</div>
+﻿<footer class="footer" id="footer">
+    <div style="text-align: center">© @DateTime.Today.ToString("yyyy.MM.dd")</div>
 </footer>
-
-@code {
-
-
-    [Inject] IJSRuntime JS { get; set; }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await JS.InvokeAsync<string>("FooterResized", DotNetObjectReference.Create(this));
-    }
-
-}
